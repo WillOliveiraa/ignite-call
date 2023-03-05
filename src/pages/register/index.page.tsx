@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
 import { ArrowRight } from 'phosphor-react';
 import { useForm } from 'react-hook-form';
@@ -49,7 +50,12 @@ export default function Register() {
         username: data.username
       });
     } catch (err) {
-      console.log(err);
+      if (err instanceof AxiosError && err?.response?.data?.message) {
+        alert(err.response.data.message);
+        return;
+      }
+
+      console.error(err);
     }
   }
 
