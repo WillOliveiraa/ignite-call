@@ -4,6 +4,9 @@
     "airbnb-base",
     "plugin:prettier/recommended"
   ],
+  "rules": {
+    "camelcase": "off"
+  },
   "plugins": [
     "prettier"
   ]
